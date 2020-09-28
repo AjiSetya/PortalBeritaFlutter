@@ -1,36 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:news_app_api/helper/data_request.dart';
-import 'package:news_app_api/helper/widgets.dart';
-import 'package:news_app_api/models/ResponseBerita.dart';
+import 'package:news_app_api/models/news_respon.dart';
+import 'package:news_app_api/repositories/data_request.dart';
+import 'package:news_app_api/ui/widgets/widgets.dart';
 
-import 'news_item.dart';
+import '../views/news_item.dart';
 
-class NewsByCategorie extends StatefulWidget {
-  final String newsCategory;
-  NewsByCategorie({this.newsCategory});
-
-  @override
-  _NewsByCategorieState createState() => _NewsByCategorieState(newsCategory);
-}
-
-class _NewsByCategorieState extends State<NewsByCategorie> {
-  RequestByCategorie newsByCategory = RequestByCategorie();
+class NewsByCategory extends StatelessWidget {
+  RequestByCategory requestByCategory = RequestByCategory();
   String newsCategory;
 
-  _NewsByCategorieState(this.newsCategory);
-
-  @override
-  void initState() {
-    super.initState();
-  }
+  NewsByCategory({this.newsCategory});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Color(0xff121212),
         appBar: myAppBar(),
         body: FutureBuilder(
-            future: newsByCategory.getNewsByCategory(newsCategory),
+            future: requestByCategory.getNewsByCategory(newsCategory),
             builder: (context, snapshot) {
               if (snapshot.hasData) {
                 return ListNewsCategory(snapshot.data);
@@ -45,7 +31,7 @@ class _NewsByCategorieState extends State<NewsByCategorie> {
 }
 
 class ListNewsCategory extends StatelessWidget {
-  ResponseBerita responseBerita;
+  NewsRespon responseBerita;
 
   ListNewsCategory(this.responseBerita);
 

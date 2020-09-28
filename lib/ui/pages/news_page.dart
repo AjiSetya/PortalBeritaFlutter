@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:news_app_api/models/ResponseBerita.dart';
+import 'package:news_app_api/models/news_respon.dart';
 import 'package:news_app_api/models/category.dart';
-import 'package:news_app_api/views/news_item.dart';
 
-import 'category_item.dart';
+import '../views/category_item.dart';
+import '../views/news_item.dart';
 
 class NewsPage extends StatelessWidget {
-  ResponseBerita responseBerita;
-  List<Categorie> categories;
+  NewsRespon responseBerita;
+  List<Category> categories;
 
   NewsPage(this.responseBerita, this.categories);
 
@@ -26,7 +26,7 @@ class NewsPage extends StatelessWidget {
                   itemBuilder: (context, index) {
                     return CategoryItem(
                       imageAssetUrl: categories[index].imageUrl,
-                      categoryName: categories[index].categorieName,
+                      categoryName: categories[index].categoryName,
                     );
                   }),
             ),

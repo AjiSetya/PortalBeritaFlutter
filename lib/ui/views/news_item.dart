@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:news_app_api/views/article_view.dart';
+import 'package:news_app_api/ui/constants/text_style.dart';
+
+import 'article_view.dart';
 
 class NewsItem extends StatelessWidget {
   final String imgUrl, title, desc, content, posturl, name;
@@ -45,21 +47,18 @@ class NewsItem extends StatelessWidget {
                         Text(
                           title,
                           maxLines: 2,
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 20,
-                              fontWeight: FontWeight.w500),
+                          style: kTextTitle,
                         ),
                         Text(
                           desc,
                           maxLines: 2,
-                          style: TextStyle(color: Colors.white, fontSize: 14),
+                          style: kSubTitle,
                         ),
                         SizedBox(height: 16.0),
                         Text(
                           name,
                           maxLines: 2,
-                          style: TextStyle(color: Colors.white, fontSize: 14),
+                          style: kSubTitle,
                         )
                       ],
                     ),

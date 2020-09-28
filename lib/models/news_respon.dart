@@ -1,11 +1,11 @@
 import 'articles.dart';
 
-class ResponseBerita {
+class NewsRespon {
   String status;
   int totalResults;
   List<Articles> articles;
 
-  ResponseBerita.fromJsonMap(Map<String, dynamic> map)
+  NewsRespon.fromJsonMap(Map<String, dynamic> map)
       : status = map["status"],
         totalResults = map["totalResults"],
         articles = List<Articles>.from(

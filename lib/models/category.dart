@@ -1,6 +1,6 @@
-class Categorie {
+class Category {
   String imageUrl;
-  String categorieName;
+  String categoryName;
 
-  Categorie(this.categorieName, this.imageUrl);
+  Category(this.categoryName, this.imageUrl);
 }

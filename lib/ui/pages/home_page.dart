@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:news_app_api/helper/data_category.dart';
-import 'package:news_app_api/helper/widgets.dart';
 import 'package:news_app_api/models/category.dart';
-import '../helper/data_request.dart';
+import 'package:news_app_api/repositories/data_category.dart';
+import 'package:news_app_api/repositories/data_request.dart';
+import 'package:news_app_api/ui/widgets/widgets.dart';
+
 import 'news_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -13,7 +14,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   News news = News();
 
-  List<Categorie> categories = List<Categorie>();
+  List<Category> categories = List<Category>();
 
   @override
   void initState() {
@@ -24,7 +25,6 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Color(0xff121212),
         appBar: myAppBar(),
         body: SafeArea(
             child: FutureBuilder(

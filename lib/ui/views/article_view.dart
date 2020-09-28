@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:news_app_api/helper/widgets.dart';
+import 'package:news_app_api/ui/widgets/widgets.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class ArticleView extends StatefulWidget {
@@ -18,7 +18,6 @@ class _ArticleViewState extends State<ArticleView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xff121212),
       appBar: myAppBar(),
       body: Container(
         height: MediaQuery.of(context).size.height,

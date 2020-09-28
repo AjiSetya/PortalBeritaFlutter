@@ -1,7 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:news_app_api/ui/constants/text_style.dart';
 
-import 'news_by_categorie.dart';
+import '../pages/news_bycategorie_page.dart';
 
 class CategoryItem extends StatelessWidget {
   final String imageAssetUrl, categoryName;
@@ -15,7 +16,7 @@ class CategoryItem extends StatelessWidget {
         Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) => NewsByCategorie(
+                builder: (context) => NewsByCategory(
                       newsCategory: categoryName.toLowerCase(),
                     )));
       },
@@ -42,10 +43,7 @@ class CategoryItem extends StatelessWidget {
               child: Text(
                 categoryName,
                 textAlign: TextAlign.center,
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 14,
-                    fontWeight: FontWeight.w500),
+                style: kCategoryText,
               ),
             )
           ],
