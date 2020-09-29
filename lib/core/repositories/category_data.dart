@@ -1,4 +1,4 @@
-import 'package:news_app_api/models/category.dart';
+part of 'repositories.dart';
 
 List<Category> getCategories() {
   List<Category> categories = [

@@ -1,16 +1,6 @@
-import 'package:flutter/material.dart';
-import 'package:news_app_api/models/news_respon.dart';
-import 'package:news_app_api/models/category.dart';
-
-import '../views/category_item.dart';
-import '../views/news_item.dart';
+part of 'pages.dart';
 
 class NewsPage extends StatelessWidget {
-  NewsRespon responseBerita;
-  List<Category> categories;
-
-  NewsPage(this.responseBerita, this.categories);
-
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -20,32 +10,44 @@ class NewsPage extends StatelessWidget {
             Container(
               padding: EdgeInsets.symmetric(horizontal: 16),
               height: 70,
-              child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: categories.length,
-                  itemBuilder: (context, index) {
-                    return CategoryItem(
-                      imageAssetUrl: categories[index].imageUrl,
-                      categoryName: categories[index].categoryName,
-                    );
-                  }),
+              child: Consumer<CategoryProvider>(
+                builder: (context, categoryProv, _) {
+                  List<Category> categories = categoryProv.categories;
+
+                  return ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: categories.length,
+                      itemBuilder: (context, index) {
+                        return CategoryItem(
+                          imageAssetUrl: categories[index].imageUrl,
+                          categoryName: categories[index].categoryName,
+                        );
+                      });
+                },
+              ),
             ),
             Container(
                 margin: EdgeInsets.only(top: 16),
-                child: ListView.builder(
-                    itemCount: responseBerita.articles.length,
-                    shrinkWrap: true,
-                    physics: ClampingScrollPhysics(),
-                    itemBuilder: (context, index) {
-                      return NewsItem(
-                        imgUrl: responseBerita.articles[index].urlToImage ?? "",
-                        title: responseBerita.articles[index].title ?? "",
-                        desc: responseBerita.articles[index].description ?? "",
-                        content: responseBerita.articles[index].content ?? "",
-                        posturl: responseBerita.articles[index].url ?? "",
-                        name: responseBerita.articles[index].source.name ?? "",
-                      );
-                    })),
+                child:
+                    Consumer<NewsProvider>(builder: (context, newsProvider, _) {
+                  List<Articles> articles =
+                      newsProvider.apiResponse.data.articles;
+
+                  return ListView.builder(
+                      itemCount: articles.length,
+                      shrinkWrap: true,
+                      physics: ClampingScrollPhysics(),
+                      itemBuilder: (context, index) {
+                        return NewsItem(
+                          imgUrl: articles[index].urlToImage ?? "",
+                          title: articles[index].title ?? "",
+                          desc: articles[index].description ?? "",
+                          content: articles[index].content ?? "",
+                          posturl: articles[index].url ?? "",
+                          name: articles[index].source.name ?? "",
+                        );
+                      });
+                })),
           ],
         ),
       ),

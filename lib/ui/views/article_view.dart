@@ -1,8 +1,4 @@
-import 'dart:async';
-
-import 'package:flutter/material.dart';
-import 'package:news_app_api/ui/widgets/widgets.dart';
-import 'package:webview_flutter/webview_flutter.dart';
+part of 'views.dart';
 
 class ArticleView extends StatefulWidget {
   final String postUrl;

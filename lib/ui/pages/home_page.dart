@@ -1,43 +1,22 @@
-import 'package:flutter/material.dart';
-import 'package:news_app_api/models/category.dart';
-import 'package:news_app_api/repositories/data_category.dart';
-import 'package:news_app_api/repositories/data_request.dart';
-import 'package:news_app_api/ui/widgets/widgets.dart';
+part of 'pages.dart';
 
-import 'news_page.dart';
-
-class HomePage extends StatefulWidget {
-  @override
-  _HomePageState createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  News news = News();
-
-  List<Category> categories = List<Category>();
-
-  @override
-  void initState() {
-    super.initState();
-    categories = getCategories();
-  }
+class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: myAppBar(),
-        body: SafeArea(
-            child: FutureBuilder(
-                future: news.getNews(),
-                builder: (context, snapshot) {
-                  if (snapshot.hasData) {
-                    return NewsPage(snapshot.data, categories);
-                  } else if (snapshot.hasError) {
-                    print(snapshot.error);
-                    return Center(child: Text("Data tidak tersedia"));
-                  }
-
-                  return Center(child: CircularProgressIndicator());
-                })));
+      appBar: myAppBar(),
+      body: SafeArea(
+        child: Consumer<NewsProvider>(builder: (context, newsProvider, _){
+          if (newsProvider.apiResponse.status == Status.COMPLETED) {
+            return NewsPage();
+          } else if (newsProvider.apiResponse.status == Status.ERROR) {
+            return Center(child: Text(newsProvider.apiResponse.message));
+          } else {
+            return Center(child: CircularProgressIndicator());
+          }
+        })
+      ),
+    );
   }
 }

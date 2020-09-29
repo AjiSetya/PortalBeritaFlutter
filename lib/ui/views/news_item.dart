@@ -1,7 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:news_app_api/ui/constants/text_style.dart';
-
-import 'article_view.dart';
+part of 'views.dart';
 
 class NewsItem extends StatelessWidget {
   final String imgUrl, title, desc, content, posturl, name;

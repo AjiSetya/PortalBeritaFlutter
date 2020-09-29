@@ -1,8 +1,4 @@
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/material.dart';
-import 'package:news_app_api/ui/constants/text_style.dart';
-
-import '../pages/news_bycategorie_page.dart';
+part of 'views.dart';
 
 class CategoryItem extends StatelessWidget {
   final String imageAssetUrl, categoryName;
@@ -17,7 +13,7 @@ class CategoryItem extends StatelessWidget {
             context,
             MaterialPageRoute(
                 builder: (context) => NewsByCategory(
-                      newsCategory: categoryName.toLowerCase(),
+                      newsCategory: categoryName.toLowerCase().trim(),
                     )));
       },
       child: Container(
