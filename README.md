@@ -5,3 +5,5 @@ Project ini menggunakan :
 - SDK Flutter
 - Provider
 - Http
+
+<img src="https://github.com/AjiSetya/portalberita_flutter/blob/development/ss.png" height="400" width="200">
