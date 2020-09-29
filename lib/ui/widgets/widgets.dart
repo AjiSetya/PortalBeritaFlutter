@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:news_app_api/ui/constants/text_style.dart';
 
 Widget myAppBar() {
   return AppBar(
@@ -7,12 +8,11 @@ Widget myAppBar() {
       children: <Widget>[
         Text(
           "Mak",
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
+          style: kAppBar1,
         ),
         Text(
           "News",
-          style:
-              TextStyle(color: Color(0xffBB86FC), fontWeight: FontWeight.w600),
+          style: kAppBar2,
         )
       ],
     ),
