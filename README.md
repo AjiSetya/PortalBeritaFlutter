@@ -6,4 +6,4 @@ Project ini menggunakan :
 - Provider
 - Http
 
-<img src="https://github.com/AjiSetya/portalberita_flutter/blob/development/ss.png" height="400" width="200">
+<img src="https://github.com/AjiSetya/portalberita_flutter/blob/provider/ss.png" height="400" width="200">
